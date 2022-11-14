@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: opacity 0;
+    
+ 
+}
+
+body{
+    background-color: #F5DEB3;
+
+
+}
+.login_page{
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    top: 30px;
+    left: 60px;
+    position: relative;
+}
+
+.login_page img{
+    width: 250px;
+    height: 300px;
+}
+
+.login_page h1{
+    position: relative;
+    top: -120px;
+    left: 170px;
+    font-size: 50px;
+    font-family: R;
+
+}
+
+.box {
+    position: relative;
+    background-color: white;
+    height: 460px;
+    width: 350px;
+    left: 850px;
+    top: -340px;
+    border-radius: 20px;
+}
+
+.team_logo{
+    position: relative;
+    left: 360px;
+    top: -460px;
+}
+.team_logo p{
+    opacity: 70%;
+    left: 20px;
+    position: relative;
+}
+
+.box form{
+    position: relative;
+    top: 20px;
+    left: 20px;
+    box-sizing: border-box;
+    align-items: center;
+
+}
+
+form .text_field{
+    position: relative;
+    border-bottom: 2px solid;
+    top: 20px;
+}
+
+.text_field input{
+    width: 100%;
+    padding: 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.button {
+    position: relative;
+    left: 70px;
+    top: 250px;
+    background-color: #EC994B;
+    border: none;
+    color: #EEEEEE;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    height: 50px;
+    width: 180px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+}
+.signup_link{
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    position: relative;
+    left: 132px;
+    top: 265px;
+}
+
+input{
+    position: relative;
+    top: 180px;
+    left: 77px;
+}
+
+.user_text, .pass_text{
+    position: relative;
+    
+}
+.user_text{
+    top: 220px;
+}
+
+.pass_text{
+    top: 240px;
+    
+}
