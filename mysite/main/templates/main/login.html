@@ -1,0 +1,48 @@
+
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+<body>
+    
+    {% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}?{% now 'U' %}">
+    
+    <div class="login_page">
+        <img id="logo" width="60px" height="70px" src="{% static 'img/logo.png' %}" alt="My image">
+        <h1 style="font-family: 'Roboto Condensed', sans-serif;">Present Po!</h1>
+
+    </div>
+
+    <div class="box">
+        <form method="post" action="">
+            <div class="txt_field">
+                <input class="user_text" type="text"  value="Enter Username" required>
+            </div>
+            <div class="txt_field">
+                <input class="pass_text" type="password" value="Enter Password" required>
+                <div class="pass">Forgot Password?</div>
+                <button class="button" type="button"><strong>Login</strong></button>
+                <div class="signup_link">or <a href="">SignUp</a></div>
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="team_logo">
+        <p style="font-family: 'Inter', sans-serif; left: 5px; ">from</p>
+        <img id="valco" width="60px" height="70px" src="{% static 'img/valcoLogo.png' %}" alt="My image">
+
+    </div>
+    
+
+    {% endblock %}
+
+</body>
+
+

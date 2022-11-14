@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <title>{% block title %}Base{% endblock %}</title>
+</head>
+<body>
+    <header>
+       
+
+        <div class="container">
+            <div class="text">
+                <img id="logo" width="60px" height="70px" src="{% static 'img/logo.png' %}" alt="My image">
+
+                <p><h3 style="font-family: 'Roboto Condensed', sans-serif;" id="title">Present Po!</h3>
+                    <h6 style="font-size: 10px;  opacity: 70%; font-family: 'Inter', sans-serif;">An Autonomous Attendance Management Sytem</h6>
+                </p>
+               
+            </div>
+        </div>
+
+    </header>
+    {% block content %}
+    <div class="change">
+        
+    </div>
+    {% endblock %}
+
+
+</body>
+</html>
