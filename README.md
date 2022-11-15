@@ -5,7 +5,7 @@
 KivyMD is a collection of Material Design compliant widgets for use with
 [Kivy](http://kivy.org), a framework for cross-platform, touch-enabled
 graphical applications.
-
+ 
 ## Installation
 
 ```bash
