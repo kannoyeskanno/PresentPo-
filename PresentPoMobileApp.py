@@ -1,9 +1,14 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.core.window import Window
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.dialog import MDDialog
+from kivy.uix.scrollview import ScrollView
 from kivy.uix.boxlayout import BoxLayout
 from kivy.factory import Factory
 
+Window.size = (420,600)
 
 class IntroScreen(Screen):
     pass
@@ -29,17 +34,35 @@ sm.add_widget(HomeScreen(name="home_screen"))
 
 
 class MainApp(MDApp):
+    dialog = None
+
     def build(self):
         self.theme_cls.theme_style = "Light"
-        return Builder.load_file('test1.kv')
+        return Builder.load_file('PresentPoMobileApp.kv')
 
-    def logger(self):
-        self.root.ids.welcome_label.text = f'Sup {self.root.ids.user.text}!'
+    def show_logout_dialog(self):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                text="Are you sure you want to logout?",
+                buttons=[
+                    MDFlatButton(
+                        text="CANCEL",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
+                        on_release=self.close_dialog,
+                    ),
+                    MDFlatButton(
+                        text="LOGOUT",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
 
-    def clear(self):
-        self.root.ids.welcome_label.text = "WELCOME"
-        self.root.ids.user.text = ""
-        self.root.ids.password.text = ""
+                    ),
+                ],
+            )
+        self.dialog.open()
+
+    def close_dialog(self, obj):
+        self.dialog.dismiss()
 
 
 MainApp().run()
