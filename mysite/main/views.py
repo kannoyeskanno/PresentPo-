@@ -14,6 +14,12 @@ def signup(response):
 def login(response):
 	return render(response, "main/login.html", {})
 
+def registerInstructor(response):
+	return render(response, "main/instructorRegister.html", {})
+
+
+
+
 #
 # def index(response):
 # 	return HttpResponse("<h1>aaaaa</h1>")

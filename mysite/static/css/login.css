@@ -6,6 +6,10 @@
     
  
 }
+.example::-webkit-scrollbar {
+    display: none;
+}
+  
 
 body{
     background-color: #F5DEB3;
@@ -84,7 +88,7 @@ form .text_field{
 .button {
     position: relative;
     left: 70px;
-    top: 250px;
+    top: 100px;
     background-color: #EC994B;
     border: none;
     color: #EEEEEE;
@@ -105,24 +109,40 @@ form .text_field{
     font-size: 12px;
     position: relative;
     left: 132px;
-    top: 265px;
+    top: 110px;
+    cursor: pointer;
 }
 
-input{
-    position: relative;
-    top: 180px;
-    left: 77px;
-}
+
 
 .user_text, .pass_text{
     position: relative;
-    
+    left: 20px;
+    width: 270px;
+    height: 30px;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    border-color: white;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: #828282;
+
 }
 .user_text{
-    top: 220px;
+    top: 70px;
+    
 }
 
 .pass_text{
-    top: 240px;
+    top: 90px;
     
+}
+.profile{
+    position: relative;
+    width: 180px;
+    height: 180px;
+    top: 30px;
+    left: 80px;
+    border-radius: 150px;
+    border-style: solid;
 }

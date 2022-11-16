@@ -20,17 +20,20 @@ Login
     </div>
 
     <div class="box">
-        <form method="post" action="">
-            <div class="txt_field">
-                <input class="user_text" type="text"  value="Enter Username" required>
-            </div>
-            <div class="txt_field">
-                <input class="pass_text" type="password" value="Enter Password" required>
-                <div class="pass">Forgot Password?</div>
-                <button class="button" type="button"><strong>Login</strong></button>
-                <div class="signup_link">or <a href="">SignUp</a></div>
-            </div>
-        </form>
+        <div class="profile">
+            
+        </div>
+        <div class="txt_field">
+            <input class="user_text" type="text" onfocus="this.value=''" value="Enter Username">
+        </div>
+        <div class="txt_field">
+            
+
+            <input class="pass_text" type="text" onblur="this.value=!this.value?'Password':this.value;" onfocus="this.select()" onclick="if (this.value=='Enter Password'){this.value=''; this.type='password'}" name="pwd" id="user_pass" value="Enter Password">
+            <button class="button" type="button"><strong>Login</strong></button>
+            <div class="signup_link">or <a href="">SignUp</a></div>
+        </div>
+        
         
     </div>
 

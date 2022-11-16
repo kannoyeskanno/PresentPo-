@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup</title>
-</head>
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+SignUp
+{% endblock %}
+
 <body>
-    <h1>signup</h1>
+    {% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}?{% now 'U' %}">
+    <button class="instructor">Instructor</button>
+
+    <button class="student">Student</button>
+
+
+
+    {% endblock %}
+    
 
 </body>
 </html>

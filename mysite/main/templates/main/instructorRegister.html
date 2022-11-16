@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+SignUp
+{% endblock %}
+<body>
+    {% block content %}
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/instructorregister.css' %}?{% now 'U' %}">
+    {% endblock %}
+
+
+</body>
