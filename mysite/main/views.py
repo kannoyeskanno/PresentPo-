@@ -17,6 +17,10 @@ def login(response):
 def registerInstructor(response):
 	return render(response, "main/instructorRegister.html", {})
 
+def registerStudent(response):
+	return render(response, "main/studentRegister.html", {})
+
+
 
 
 
