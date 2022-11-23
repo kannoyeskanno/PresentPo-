@@ -10,7 +10,6 @@ def index(response):
 def signup(response):
 	return render(response, "main/signup.html", {})
 
-
 def login(response):
 	return render(response, "main/login.html", {})
 
@@ -22,13 +21,3 @@ def registerStudent(response):
 
 
 
-
-
-#
-# def index(response):
-# 	return HttpResponse("<h1>aaaaa</h1>")
-# def signUp(response):
-# 	return HttpResponse("<h1>signusadasd</h1>")
-#
-#
-#
