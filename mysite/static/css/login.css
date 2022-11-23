@@ -2,16 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: opacity 0;
     
- 
 }
+
+
 .example::-webkit-scrollbar {
     display: none;
 }
   
 
 body{
+    overflow: hidden;
     background-color: #F5DEB3;
 
 
@@ -87,7 +88,7 @@ form .text_field{
 
 .button {
     position: relative;
-    left: 70px;
+    left: 80px;
     top: 100px;
     background-color: #EC994B;
     border: none;
@@ -104,11 +105,12 @@ form .text_field{
     border-radius: 20px;
     font-family: 'Inter', sans-serif;
 }
+
 .signup_link{
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     position: relative;
-    left: 132px;
+    left: 150px;
     top: 110px;
     cursor: pointer;
 }
@@ -117,7 +119,7 @@ form .text_field{
 
 .user_text, .pass_text{
     position: relative;
-    left: 20px;
+    left: 40px;
     width: 270px;
     height: 30px;
     background-color: #D9D9D9;
@@ -137,12 +139,13 @@ form .text_field{
     top: 90px;
     
 }
+
 .profile{
     position: relative;
     width: 180px;
     height: 180px;
     top: 30px;
-    left: 80px;
+    left: 85px;
     border-radius: 150px;
     border-style: solid;
 }
