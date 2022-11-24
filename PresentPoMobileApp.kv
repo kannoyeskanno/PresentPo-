@@ -32,7 +32,7 @@ ScreenManager:
     MDRectangleFlatButton:
         text: "Log In"
         text_color: "white"
-        font_size: 18
+        font_size: "18sp"
 
         line_color: "#EC994B"
         md_bg_color: "#EC994B"
@@ -46,7 +46,7 @@ ScreenManager:
     MDRectangleFlatButton:
         text: "Sign Up"
         text_color: "#EC994B"
-        font_size: 18
+        font_size: "18sp"
 
         line_width: 1.1
         line_color: "#EC994B"
@@ -65,8 +65,8 @@ ScreenManager:
         icon_left: "account"
 
         size_hint_x: None
-        width: 320
-        font_size: 18
+        width: root.width * .8
+        font_size: "18sp"
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
         text_color_normal: "#3A3A3A"
@@ -83,8 +83,8 @@ ScreenManager:
         password: True
 
         size_hint_x: None
-        width: 320
-        font_size: 18
+        width: root.width * .8
+        font_size: "18sp"
         pos_hint: {"center_x": 0.5, "center_y": 0.4}
 
         text_color_normal: "#000000"
@@ -123,9 +123,9 @@ ScreenManager:
         bold: True
         theme_text_color: "Custom"
         text_color: "#EC994B"
-        font_size: 16
+        font_size: "16sp"
 
-        pos_hint: {"center_y":.23, "center_x":.7}
+        pos_hint: {"center_y":.23, "center_x":.69}
         on_press:
             root.manager.current = "signup_screen"
             root.manager.transition.direction = "left"
@@ -134,8 +134,8 @@ ScreenManager:
         text: "Don't have an account?"
         theme_text_color: "Custom"
         text_color: "#888888"
-        font_size: 16
-        pos_hint: {"center_y":.23, "center_x":.73}
+        font_size: "16sp"
+        pos_hint: {"center_y":.23, "center_x":.74}
 
     Image:
         source: "valco_logo.png"
@@ -150,8 +150,8 @@ ScreenManager:
         icon_left: "email"
 
         size_hint_x: None
-        width: 320
-        font_size: 18
+        width: root.width * .8
+        font_size: "18sp"
         pos_hint: {"center_x": 0.5, "center_y": 0.6}
 
         text_color_focus: "#EC994B"
@@ -166,8 +166,8 @@ ScreenManager:
         icon_left: "account"
 
         size_hint_x: None
-        width: 320
-        font_size: 18
+        width: root.width * .8
+        font_size: "18sp"
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
         text_color_focus: "#EC994B"
@@ -183,8 +183,8 @@ ScreenManager:
         password: True
 
         size_hint_x: None
-        width: 320
-        font_size: 18
+        width: root.width * .8
+        font_size: "18sp"
         pos_hint: {"center_x": 0.5, "center_y": 0.4}
 
         text_color_focus: "#EC994B"
@@ -204,7 +204,7 @@ ScreenManager:
     MDRectangleFlatButton:
         text: "Sign Up"
         text_color: "white"
-        font_size: 18
+        font_size: "18sp"
 
         line_color: "#EC994B"
         md_bg_color: "#EC994B"
@@ -218,7 +218,7 @@ ScreenManager:
         bold: True
         theme_text_color: "Custom"
         text_color: "#EC994B"
-        font_size: 16
+        font_size: "16sp"
 
         pos_hint: {"center_y":.23, "center_x":.72}
         on_press:
@@ -229,13 +229,12 @@ ScreenManager:
         text: "Already have an account?"
         theme_text_color: "Custom"
         text_color: "#888888"
-        font_size: 16
+        font_size: "16sp"
         pos_hint: {"center_y":.23, "center_x":.72}
 
     Image:
         source: "valco_logo.png"
         pos_hint: {"center_y":.1, "center_x":.5}
-
 
 <HomeScreen>:
     name: "home_screen"
@@ -253,24 +252,40 @@ ScreenManager:
                 text: 'Home'
                 icon: 'home'
 
-                MDTopAppBar:
-                    id: toolbar
+                MDBoxLayout:
                     md_bg_color: "#EC994B"
-                    title: "Home"
-                    elevation: 1
-                    pos_hint: {'top': 1}
+                    size_hint: None, None
+                    width: root.width
+                    height: "65dp"
+                    pos_hint: {"top": 1}
+
+                    MDLabel:
+                        text: "    Home"
+                        theme_text_color: "Custom"
+                        text_color: "#FFFFFF"
+                        font_size: "22sp"
+                        bold: True
+                        pos_hint: {"center_x":.5}
 
             MDBottomNavigationItem:
                 name: 'screen 2'
                 text: 'Attendance'
                 icon: 'calendar'
 
-                MDTopAppBar:
-                    id: toolbar
+                MDBoxLayout:
                     md_bg_color: "#EC994B"
-                    title: "Classes"
-                    elevation: 1
-                    pos_hint: {'top': 1}
+                    size_hint: None, None
+                    width: root.width
+                    height: "65dp"
+                    pos_hint: {"top": 1}
+
+                    MDLabel:
+                        text: "    Attendance"
+                        theme_text_color: "Custom"
+                        text_color: "#FFFFFF"
+                        font_size: "22sp"
+                        bold: True
+                        pos_hint: {"center_x":.5}
 
                 ScrollView:
                     do_scroll_x: False
@@ -285,7 +300,7 @@ ScreenManager:
                         MDRectangleFlatButton:
                             text: "BSIT 2A"
                             text_color: "white"
-                            font_size: 18
+                            font_size: "18sp"
 
                             line_color: "#EC994B"
                             md_bg_color: "#EC994B"
@@ -297,7 +312,7 @@ ScreenManager:
                         MDRectangleFlatButton:
                             text: "BSIT 2B"
                             text_color: "#000000"
-                            font_size: 18
+                            font_size: "18sp"
 
                             line_color: "#EC994B"
 
@@ -308,7 +323,7 @@ ScreenManager:
                         MDRectangleFlatButton:
                             text: "BSIT 2C"
                             text_color: "white"
-                            font_size: 18
+                            font_size: "18sp"
 
                             line_color: "#EC994B"
                             md_bg_color: "#EC994B"
@@ -324,38 +339,40 @@ ScreenManager:
 
                 # this will be triggered when screen 3 is selected
                 # creates a label
-                MDTopAppBar:
-                    id: toolbar
+                MDBoxLayout:
                     md_bg_color: "#EC994B"
-                    title: "Scan Qr Code"
-                    elevation: 1
-                    pos_hint: {'top': 1}
-
-            #:import ZBarCam kivy_garden.zbarcam.ZBarCam
-            BoxLayout:
-                orientation: 'vertical'
-                ZBarCam:
-                    id: zbarcam
-                    # optional, override the camera index (default 0)
-                    camera_index: 0     # or try a different value
-                    # optional, by default checks all types
-                    code_types: 'QRCODE', 'EAN13'
-                Label:
                     size_hint: None, None
-                    size: self.texture_size[0], 50
-                    text: ', '.join([str(symbol.data) for symbol in zbarcam.symbols])
+                    width: root.width
+                    height: "65dp"
+                    pos_hint: {"top": 1}
+
+                    MDLabel:
+                        text: "    Scan QR Code"
+                        theme_text_color: "Custom"
+                        text_color: "#FFFFFF"
+                        font_size: "22sp"
+                        bold: True
+                        pos_hint: {"center_x":.5}
 
             MDBottomNavigationItem:
                 name: 'screen 4'
                 text: 'Settings'
                 icon: 'cog'
 
-                MDTopAppBar:
-                    id: toolbar
+                MDBoxLayout:
                     md_bg_color: "#EC994B"
-                    title: "Settings"
-                    elevation: 1
-                    pos_hint: {'top': 1}
+                    size_hint: None, None
+                    width: root.width
+                    height: "65dp"
+                    pos_hint: {"top": 1}
+
+                    MDLabel:
+                        text: "    Settings"
+                        theme_text_color: "Custom"
+                        text_color: "#FFFFFF"
+                        font_size: "22sp"
+                        bold: True
+                        pos_hint: {"center_x":.5}
 
                 MDBoxLayout:
                     size_hint: None, None
@@ -366,7 +383,7 @@ ScreenManager:
                     MDRectangleFlatIconButton:
                         icon: "account-circle"
                         text: "Account"
-                        font_size: 21
+                        font_size:"21sp"
                         text_color: "#000000"
                         icon_color: "#000000"
                         line_color: "#AAAAAA"
@@ -377,7 +394,7 @@ ScreenManager:
                     MDRectangleFlatIconButton:
                         icon: "headset"
                         text: "Help and Support"
-                        font_size: 21
+                        font_size: "21sp"
                         text_color: "#000000"
                         icon_color: "#000000"
                         line_color: "#AAAAAA"
@@ -388,7 +405,7 @@ ScreenManager:
                     MDRectangleFlatIconButton:
                         icon: "help-circle-outline"
                         text: "About Us"
-                        font_size: 21
+                        font_size: "21sp"
                         text_color: "#000000"
                         icon_color: "#000000"
                         line_color: "#AAAAAA"
@@ -399,9 +416,9 @@ ScreenManager:
                     MDRectangleFlatIconButton:
                         icon: "logout"
                         text: "Logout"
-                        font_size: 21
+                        font_size: "21sp"
                         text_color: "#000000"
-                        icon_color: "#FFFFFF"
+                        icon_color: "#000000"
                         line_color: "#AAAAAA"
 
                         size_hint: None, None

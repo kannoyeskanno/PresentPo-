@@ -1,14 +1,15 @@
 from kivy.lang import Builder
+from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
+from kivy_garden.zbarcam import ZBarCam
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.boxlayout import BoxLayout
 from kivy.factory import Factory
 
-Window.size = (420,600)
 
 class IntroScreen(Screen):
     pass
@@ -37,8 +38,9 @@ class MainApp(MDApp):
     dialog = None
 
     def build(self):
+        self.icon = "presentpo_icon.png"
         self.theme_cls.theme_style = "Light"
-        return Builder.load_file('PresentPoMobileApp.kv')
+        return Builder.load_file('test1.kv')
 
     def show_logout_dialog(self):
         if not self.dialog:
@@ -55,7 +57,6 @@ class MainApp(MDApp):
                         text="LOGOUT",
                         theme_text_color="Custom",
                         text_color=self.theme_cls.primary_color,
-
                     ),
                 ],
             )
