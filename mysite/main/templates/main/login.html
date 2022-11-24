@@ -18,24 +18,29 @@ Login
         <h1 style="font-family: 'Roboto Condensed', sans-serif;">Present Po!</h1>
 
     </div>
+    <form method="POST">
+        <div class="box">
+            <div class="profile">
 
-    <div class="box">
-        <div class="profile">
-            
-        </div>
-        <div class="txt_field">
-            <input class="user_text" type="text" onfocus="this.value=''" value="Enter Username">
-        </div>
-        <div class="txt_field">
-            
+            </div>
+            <div class="txt_field">
+                <input class="user_text" name="username" type="text" onfocus="this.value=''" value="Enter Username">
+            </div>
+            <div class="txt_field">
 
-            <input class="pass_text" type="text" onblur="this.value=!this.value?'Password':this.value;" onfocus="this.select()" onclick="if (this.value=='Enter Password'){this.value=''; this.type='password'}" name="pwd" id="user_pass" value="Enter Password">
-            <button class="button" type="button"><strong>Login</strong></button>
-            <div class="signup_link">or <a href="/main/signup.html/">SignUp</a></div>
+
+                <input class="pass_text"  type="text" onblur="this.value=!this.value?'Password':this.value;" onfocus="this.select()" onclick="if (this.value=='Enter Password'){this.value=''; this.type='password'}" name="password" id="user_pass" value="Enter Password">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="button"><strong>Login</strong></button>
+                <div class="signup_link">or <a href="/main/signup.html/">SignUp</a></div>
+            </div>
+
+
+
         </div>
-        
-        
-    </div>
+    </form>
+
 
     <div class="team_logo">
         <p style="font-family: 'Inter', sans-serif; left: 5px; ">from</p>

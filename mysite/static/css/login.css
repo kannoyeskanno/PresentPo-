@@ -86,7 +86,7 @@ form .text_field{
     outline: none;
 }
 
-.button {
+button {
     position: relative;
     left: 80px;
     top: 100px;
@@ -101,10 +101,13 @@ form .text_field{
     margin: 4px 2px;
     height: 50px;
     width: 180px;
-    cursor: pointer;
     border-radius: 20px;
     font-family: 'Inter', sans-serif;
+    cursor: pointer;
+
+
 }
+
 
 .signup_link{
     font-family: 'Inter', sans-serif;
