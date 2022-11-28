@@ -9,9 +9,23 @@ from kivy_garden.zbarcam import ZBarCam
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.boxlayout import BoxLayout
 from kivy.factory import Factory
+from kivy.core.audio import SoundLoader
 import sqlite3
-import os.path
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+from datetime import date
+import time
+
+
+scope = [
+'https://www.googleapis.com/auth/spreadsheets',
+'https://www.googleapis.com/auth/drive'
+]
+creds = ServiceAccountCredentials.from_json_keyfile_name('client.json', scope)
+client = gspread.authorize(creds)
+sheet = client.open('Attendance').sheet1
 
 
 class IntroScreen(Screen):
@@ -61,7 +75,7 @@ class MainApp(MDApp):
         db.close()
 
 
-        return Builder.load_file('PresentPoMobileApp.kv')
+        return Builder.load_file('app.kv')
 
     def signin(self):
 
@@ -71,6 +85,7 @@ class MainApp(MDApp):
         mydata = (self.root.get_screen("signup_screen").ids.signup_email.text, self.root.get_screen("signup_screen").ids.signup_username.text, self.root.get_screen("signup_screen").ids.signup_password.text)
         c.execute(sql, mydata)
         self.root.current = "home_screen"
+        self.root.get_screen("home_screen").ids.username.text = self.root.get_screen("signup_screen").ids.signup_username.text
         db.commit()
         db.close()
 
@@ -88,6 +103,7 @@ class MainApp(MDApp):
             if i[1] == username:
                 if i[2] == password:
                     self.root.current = "home_screen"
+                    self.root.get_screen("home_screen").ids.username.text = username
                     break
                 else:
                     self.show_login_denied_dialog()
@@ -97,28 +113,30 @@ class MainApp(MDApp):
         db.commit()
         db.close()
 
-    def scanner(self):
-        self.root.current = "scanner_screen"
-        return Builder.load_string("""
-<ScannerScreen>
-#: import ZBarCam kivy_garden.zbarcam.ZBarCam
-name: "scanner_screen"
-MDBoxLayout:
-    orientation: 'vertical'
-    ZBarCam:
-        id: zbarcam
-        width: root.width
-        height: root.height
-        # optional, override the camera index (default 0)
-        camera_index: 0  # or try a different value
-        #  optional, by default checks all types
-        code_types: 'QRCODE', 'EAN13'
-    Label:
-        id: input
-        size_hint: None, None
-        size: self.texture_size[0], 50
-        text: ', '.join([str(symbol.data) for symbol in zbarcam.symbols])
-        """)
+
+    def get_qr_value(self):
+        if str(self.root.get_screen("scanner_screen").ids.qr.text).strip("b'") != '':
+            self.update_sheet(str(self.root.get_screen("scanner_screen").ids.qr.text).strip("b'"))
+
+    def check_date(self):
+        cell = sheet.find(date.today().strftime('%B %d %Y'))
+        if cell is not None:
+            return cell.col
+
+    def check_name(self, name):
+        cell = sheet.find(name)
+        if cell is not None:
+            sound = SoundLoader.load('beep.mp3')
+            if sound:
+                sound.play()
+            return cell.row
+
+
+
+    def update_sheet(self, name):
+        sheet.update_cell(self.check_name(name), self.check_date(), time.strftime("%I : %M %p"))
+
+
 
     def show_login_denied_dialog(self):
         if not self.dialog:

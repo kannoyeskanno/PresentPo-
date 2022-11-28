@@ -250,10 +250,6 @@ ScreenManager:
     MDBoxLayout:
         orientation: "vertical"
 
-
-
-
-
         MDBottomNavigation:
             panel_color: "#EC994B"
             text_color_normal: 0/236, 0/153, 0/75, .6
@@ -303,23 +299,13 @@ ScreenManager:
                     width: root.width
 
                     MDLabel:
-                        text: "Sample Name"
+                        id: username
+                        text: "Username"
                         theme_text_color: "Custom"
                         text_color: "#000000"
                         font_size: "17sp"
                         bold: True
                         pos_hint: {"center_x":1}
-
-
-
-
-
-
-
-
-
-
-
 
             MDBottomNavigationItem:
                 name: 'screen 2'
@@ -419,15 +405,8 @@ ScreenManager:
                     line_color: "#EC994B"
                     md_bg_color: "#EC994B"
                     on_release:
-                        #app.scanner()
+                        root.manager.current = "scanner_screen"
                         root.manager.transition.direction = "right"
-
-
-
-
-
-
-
 
             MDBottomNavigationItem:
                 name: 'screen 4'
@@ -502,5 +481,45 @@ ScreenManager:
                         on_release: app.show_logout_dialog()
 
 
+<ScannerScreen>
+    name: "scanner_screen"
+    #:import ZBarCam kivy_garden.zbarcam.ZBarCam
+    BoxLayout:
+        orientation: 'vertical'
+        ZBarCam:
+            id: zbarcam
+            # optional, override the camera index (default 0)
+            camera_index: 0     # or try a different value
+            # optional, by default checks all types
+            code_types: 'QRCODE', 'EAN13'
+        Label:
+            id: qr
+            size_hint: None, None
+            size: self.texture_size[0], 50
+            text: ', '.join([str(symbol.data) for symbol in zbarcam.symbols])
 
+        MDRectangleFlatButton:
+            text: "Scan QR"
+            text_color: "white"
+            font_size: 18
+            border: (20,20,20,20)
+            size_hint: (1, .10)
+            pos: (150, 90)
+
+            line_color: "#EC994B"
+            md_bg_color: "#EC994B"
+            on_press: app.get_qr_value()
+
+        MDRectangleFlatButton:
+            text: "Back"
+            text_color: "white"
+            font_size: 18
+            border: (20,20,20,20)
+            size_hint: (1, .10)
+            pos: (150, 90)
+            md_bg_color: "#051708"
+            line_color: "#EC994B"
+            on_press:
+                root.manager.current = "home_screen"
+                root.manager.transition.direction = "left"
 

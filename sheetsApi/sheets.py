@@ -17,13 +17,13 @@ def checkDate():
     if cell is not None:
         return cell.col
 
-def checkName(name):
+def checkName():
     cell = sheet.find(name)
     if cell is not None:
         return cell.row
 
 def updateSheet():
-    sheet.update_cell(checkName("asis"), checkDate(), time.strftime("%I : %M %p"))
+    sheet.update_cell(checkName(), checkDate(), time.strftime("%I : %M %p"))
 
 
 updateSheet()
