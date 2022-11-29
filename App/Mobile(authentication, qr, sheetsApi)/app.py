@@ -77,7 +77,7 @@ class MainApp(MDApp):
 
         return Builder.load_file('app.kv')
 
-    def signin(self):
+    def signup(self):
 
         db = sqlite3.connect('database.db')
         c = db.cursor()

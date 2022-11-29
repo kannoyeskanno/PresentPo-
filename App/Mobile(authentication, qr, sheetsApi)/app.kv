@@ -5,9 +5,6 @@ ScreenManager:
     HomeScreen:
     ScannerScreen:
 
-
-
-
 <IntroScreen>:
     name: "intro_screen"
 
@@ -29,7 +26,7 @@ ScreenManager:
         text: "An Autonomous Attendance Management System"
         theme_text_color: "Custom"
         text_color: "#888888"
-        font_style: "Subtitle1"
+        font_size: "15sp"
         size_hint_y: None
         pos_hint: {"center_y":.28, "center_x":.58}
 
@@ -41,9 +38,8 @@ ScreenManager:
         line_color: "#EC994B"
         md_bg_color: "#EC994B"
 
-        pos_hint: {"center_y":.2, "center_x":.5}
-        size_hint: None, None
-        width: root.width*0.9
+        pos_hint: {"center_y":.21, "center_x":.5}
+        size_hint: .9, 0
 
         on_press: root.manager.current = "login_screen"
 
@@ -55,9 +51,8 @@ ScreenManager:
         line_width: 1.1
         line_color: "#EC994B"
 
-        pos_hint: {"center_y":.12, "center_x":.5}
-        size_hint: None, None
-        width: root.width*.9
+        pos_hint: {"center_y":.14, "center_x":.5}
+        size_hint: .9, None
         on_press: root.manager.current = "signup_screen"
 
 <LoginScreen>:
@@ -107,7 +102,6 @@ ScreenManager:
             login_password.password = False if login_password.password is True else True
 
     MDRectangleFlatButton:
-        id: button
         text: "Log In"
         text_color: "white"
         font_size: "18sp"
@@ -119,9 +113,7 @@ ScreenManager:
         size_hint: None, None
         width: root.width * .8
 
-        on_press:
-            app.login()
-            root.manager.transition.direction = "left"
+        on_press: app.login()
 
     MDTextButton:
         text: "Sign Up"
@@ -130,17 +122,15 @@ ScreenManager:
         text_color: "#EC994B"
         font_size: "16sp"
 
-        pos_hint: {"center_y":.23, "center_x":.69}
-        on_press:
-            root.manager.current = "signup_screen"
-            root.manager.transition.direction = "right"
+        pos_hint: {"center_y":.23, "center_x":.71}
+        on_press: root.manager.current = "signup_screen"
 
     MDLabel:
         text: "Don't have an account?"
         theme_text_color: "Custom"
         text_color: "#888888"
         font_size: "16sp"
-        pos_hint: {"center_y":.23, "center_x":.74}
+        pos_hint: {"center_y":.23, "center_x":.71}
 
     Image:
         source: "valco_logo.png"
@@ -217,9 +207,7 @@ ScreenManager:
         pos_hint: {"center_y":.3, "center_x":.5}
         size_hint: None, None
         width: root.width * .8
-        on_release:
-            app.signin()
-            root.manager.transition.direction = "right"
+        on_press: app.signup()
 
     MDTextButton:
         text: "Log In"
@@ -228,17 +216,16 @@ ScreenManager:
         text_color: "#EC994B"
         font_size: "16sp"
 
-        pos_hint: {"center_y":.23, "center_x":.72}
-        on_press:
-            root.manager.current = "login_screen"
-            root.manager.transition.direction = "right"
+        pos_hint: {"center_y":.23, "center_x":.73}
+        on_press: root.manager.current = "login_screen"
+
 
     MDLabel:
         text: "Already have an account?"
         theme_text_color: "Custom"
         text_color: "#888888"
         font_size: "16sp"
-        pos_hint: {"center_y":.23, "center_x":.72}
+        pos_hint: {"center_y":.23, "center_x":.70}
 
     Image:
         source: "valco_logo.png"
@@ -247,56 +234,48 @@ ScreenManager:
 <HomeScreen>:
     name: "home_screen"
 
-    MDBoxLayout:
-        orientation: "vertical"
+    MDBottomNavigation:
+        panel_color: "#EC994B"
+        text_color_normal: 0/236, 0/153, 0/75, .6
+        text_color_active: 0/236, 0/153, 0/75, 1
 
-        MDBottomNavigation:
-            panel_color: "#EC994B"
-            text_color_normal: 0/236, 0/153, 0/75, .6
-            text_color_active: 0/236, 0/153, 0/75, 1
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Home'
+            icon: 'home'
 
-            MDBottomNavigationItem:
-                name: 'screen 1'
-                text: 'Home'
-                icon: 'home'
+            MDBoxLayout:
+                md_bg_color: "#EC994B"
+                size_hint: None, None
+                width: root.width
+                height: "65dp"
+                pos_hint: {"top": 1}
+
+                MDLabel:
+                    text: "    Home"
+                    theme_text_color: "Custom"
+                    text_color: "#FFFFFF"
+                    font_size: "22sp"
+                    bold: True
+                    pos_hint: {"center_x":.5}
+
+            MDBoxLayout:
+                md_bg_color: "#F5DEB3"
+                size_hint: None, None
+                width: root.width
+                height: "150dp"
+                #size_hint: (.3, .10)
+                pos: (0, 320)
+                line_color: "#F5DEB3"
 
                 MDBoxLayout:
-                    md_bg_color: "#EC994B"
-                    size_hint: None, None
-                    width: root.width
-                    height: "65dp"
-                    pos_hint: {"top": 1}
-
-                    MDLabel:
-                        text: "    Home"
-                        theme_text_color: "Custom"
-                        text_color: "#FFFFFF"
-                        font_size: "22sp"
-                        bold: True
-                        pos_hint: {"center_x":.5}
-
-
-
-                MDBoxLayout:
-                    size_hint: None, None
-                    height: root.height * .2
-                    orientation: 'vertical'
                     md_bg_color: "#F5DEB3"
-                    width: root.width
-
-                MDRelativeLayout:
                     size_hint: None, None
-                    height: root.height * .2
-                    orientation: 'vertical'
-                    md_bg_color: "#F5DEB3"
-                    width: root.width
-
-                MDRelativeLayout:
-                    size_hint: None, None
-                    height: root.height * .2
-                    orientation: 'vertical'
-                    md_bg_color: "#EFA848"
-                    width: root.width
+                    #width: root.width
+                    height: "40dp"
+                    #size_hint: (.3, .10)
+                    pos: (-10, 10)
+                    line_color: "#000000"
 
                     MDLabel:
                         id: username
@@ -305,180 +284,177 @@ ScreenManager:
                         text_color: "#000000"
                         font_size: "17sp"
                         bold: True
-                        pos_hint: {"center_x":1}
+                        #pos_hint: {"center_x":90}
 
-            MDBottomNavigationItem:
-                name: 'screen 2'
-                text: 'Attendance'
-                icon: 'calendar'
+            MDGridLayout:
+                rows: 1
+                md_bg_color: "#FFFFFF"
+                size_hint: None, None
+                width: root.width
+                height: "70dp"
+                #size_hint: (.3, .10)
+                pos: (0, 180)
+                line_color: "#FFFFFF"
 
-                MDBoxLayout:
-                    md_bg_color: "#EC994B"
-                    size_hint: None, None
-                    width: root.width
-                    height: "65dp"
-                    pos_hint: {"top": 1}
 
-                    MDLabel:
-                        text: "    Attendance"
-                        theme_text_color: "Custom"
-                        text_color: "#FFFFFF"
-                        font_size: "22sp"
-                        bold: True
-                        pos_hint: {"center_x":.5}
+                MDRectangleFlatIconButton:
+                    icon: "file-upload-outline"
+                    #text: "Account"
+                    font_size:"35sp"
+                    text_color: "#000000"
+                    icon_color: "#000000"
+                    line_color: "#FFFFFF"
+                    size_hint: 1, 0
+                    pos_hint: {"center_x":.5}
 
-                ScrollView:
-                    do_scroll_x: False
-                    do_scroll_y: True
-                    pos_hint: {"center_x": 0.5, "center_y": 0.38}
+                MDRectangleFlatIconButton:
+                    icon: "calendar"
+                    #text: "Help and Support"
+                    font_size: "35sp"
+                    text_color: "#000000"
+                    icon_color: "#000000"
+                    line_color: "#FFFFFF"
 
-                    MDBoxLayout:
-                        size_hint: None, None
-                        size: 420, 400
-                        orientation: 'vertical'
+                    size_hint: 1, 0
+                    #pos_hint: {'top': .72}
+                    pos_hint: {"center_x":.5}
 
-                        MDRectangleFlatButton:
-                            text: "BSIT 2A"
-                            text_color: "white"
-                            font_size: "18sp"
+                MDRectangleFlatIconButton:
+                    icon: "qrcode-scan"
+                    #text: "About Us"
+                    font_size: "35sp"
+                    text_color: "#000000"
+                    icon_color: "#000000"
+                    line_color: "#FFFFFF"
 
-                            line_color: "#EC994B"
-                            md_bg_color: "#EC994B"
+                    size_hint: 1, 0
+                    #pos_hint: {'top': .64}
+                    pos_hint: {"center_x":2}
+                    on_release: root.manager.current = "scanner_screen"
 
-                            size_hint: None, None
-                            width: root.width
-                            height: root.height * .2
 
-                        MDRectangleFlatButton:
-                            text: "BSIT 2B"
-                            text_color: "#000000"
-                            font_size: "18sp"
 
-                            line_color: "#EC994B"
 
-                            size_hint: None, None
-                            width: root.width
-                            height: root.height * .2
 
-                        MDRectangleFlatButton:
-                            text: "BSIT 2C"
-                            text_color: "white"
-                            font_size: "18sp"
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Attendance'
+            icon: 'calendar'
 
-                            line_color: "#EC994B"
-                            md_bg_color: "#EC994B"
+            MDBoxLayout:
+                md_bg_color: "#EC994B"
+                size_hint: None, None
+                width: root.width
+                height: "65dp"
+                pos_hint: {"top": 1}
 
-                            size_hint: None, None
-                            width: root.width
-                            height: root.height * .2
+                MDLabel:
+                    text: "    Attendance"
+                    theme_text_color: "Custom"
+                    text_color: "#FFFFFF"
+                    font_size: "22sp"
+                    bold: True
+                    pos_hint: {"center_x":.5}
 
-            MDBottomNavigationItem:
-                name: 'screen 3'
-                text: 'Scan'
-                icon: 'qrcode'
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Scan'
+            icon: 'qrcode'
 
-                # this will be triggered when screen 3 is selected
+            MDBoxLayout:
+                md_bg_color: "#EC994B"
+                size_hint: None, None
+                width: root.width
+                height: "65dp"
+                pos_hint: {"top": 1}
 
-                # creates a label
-                MDBoxLayout:
-                    md_bg_color: "#EC994B"
-                    size_hint: None, None
-                    width: root.width
-                    height: "65dp"
-                    pos_hint: {"top": 1}
+                MDLabel:
+                    text: "    Scan QR Code"
+                    theme_text_color: "Custom"
+                    text_color: "#FFFFFF"
+                    font_size: "22sp"
+                    bold: True
+                    pos_hint: {"center_x":.5}
 
-                    MDLabel:
-                        text: "    Scan QR Code"
-                        theme_text_color: "Custom"
-                        text_color: "#FFFFFF"
-                        font_size: "22sp"
-                        bold: True
-                        pos_hint: {"center_x":.5}
-                MDRectangleFlatButton:
-                    text: "Scan QR"
-                    text_color: "white"
-                    font_size: 18
-                    border: (20,20,20,20)
-                    size_hint: (.3, .10)
-                    pos: (150, 20)
+            MDRectangleFlatButton:
+                text: "Scan QR"
+                text_color: "white"
+                font_size: 18
+                border: (20,20,20,20)
+                size_hint: (.3, .10)
+                pos: (150, 20)
 
-                    line_color: "#EC994B"
-                    md_bg_color: "#EC994B"
-                    on_release:
-                        root.manager.current = "scanner_screen"
-                        root.manager.transition.direction = "right"
+                line_color: "#EC994B"
+                md_bg_color: "#EC994B"
+                on_release:
+                    root.manager.current = "scanner_screen"
+                    root.manager.transition.direction = "right"
 
-            MDBottomNavigationItem:
-                name: 'screen 4'
-                text: 'Settings'
-                icon: 'cog'
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: 'Settings'
+            icon: 'cog'
 
-                MDBoxLayout:
-                    md_bg_color: "#EC994B"
-                    size_hint: None, None
-                    width: root.width
-                    height: "65dp"
-                    pos_hint: {"top": 1}
+            MDBoxLayout:
+                md_bg_color: "#EC994B"
+                size_hint: None, None
+                width: root.width
+                height: "65dp"
+                pos_hint: {"top": 1}
 
-                    MDLabel:
-                        text: "    Settings"
-                        theme_text_color: "Custom"
-                        text_color: "#FFFFFF"
-                        font_size: "22sp"
-                        bold: True
-                        pos_hint: {"center_x":.5}
+                MDLabel:
+                    text: "    Settings"
+                    theme_text_color: "Custom"
+                    text_color: "#FFFFFF"
+                    font_size: "22sp"
+                    bold: True
+                    pos_hint: {"center_x":.5}
 
-                MDBoxLayout:
-                    size_hint: None, None
-                    size: 420, 400
-                    pos_hint: {"center_x": 0.5, "center_y": 0.933}
-                    orientation: 'vertical'
+            MDRectangleFlatIconButton:
+                icon: "account-circle"
+                text: "Account"
+                font_size:"21sp"
+                text_color: "#000000"
+                icon_color: "#000000"
+                line_color: "#AAAAAA"
 
-                    MDRectangleFlatIconButton:
-                        icon: "account-circle"
-                        text: "Account"
-                        font_size:"21sp"
-                        text_color: "#000000"
-                        icon_color: "#000000"
-                        line_color: "#AAAAAA"
+                size_hint: 1, 0
+                pos_hint: {'top': 0.8}
 
-                        size_hint: None, None
-                        width: root.width
+            MDRectangleFlatIconButton:
+                icon: "headset"
+                text: "Help and Support"
+                font_size: "21sp"
+                text_color: "#000000"
+                icon_color: "#000000"
+                line_color: "#AAAAAA"
 
-                    MDRectangleFlatIconButton:
-                        icon: "headset"
-                        text: "Help and Support"
-                        font_size: "21sp"
-                        text_color: "#000000"
-                        icon_color: "#000000"
-                        line_color: "#AAAAAA"
+                size_hint: 1, 0
+                pos_hint: {'top': .72}
 
-                        size_hint: None, None
-                        width: root.width
+            MDRectangleFlatIconButton:
+                icon: "help-circle-outline"
+                text: "About Us"
+                font_size: "21sp"
+                text_color: "#000000"
+                icon_color: "#000000"
+                line_color: "#AAAAAA"
 
-                    MDRectangleFlatIconButton:
-                        icon: "help-circle-outline"
-                        text: "About Us"
-                        font_size: "21sp"
-                        text_color: "#000000"
-                        icon_color: "#000000"
-                        line_color: "#AAAAAA"
+                size_hint: 1, 0
+                pos_hint: {'top': .64}
 
-                        size_hint: None, None
-                        width: root.width
+            MDRectangleFlatIconButton:
+                icon: "logout"
+                text: "Logout"
+                font_size: "21sp"
+                text_color: "#000000"
+                icon_color: "#000000"
+                line_color: "#AAAAAA"
 
-                    MDRectangleFlatIconButton:
-                        icon: "logout"
-                        text: "Logout"
-                        font_size: "21sp"
-                        text_color: "#000000"
-                        icon_color: "#000000"
-                        line_color: "#AAAAAA"
+                size_hint: 1, 0
+                pos_hint: {'top': .56}
 
-                        size_hint: None, None
-                        width: root.width
-
-                        on_release: app.show_logout_dialog()
+                on_release: app.show_logout_dialog()
 
 
 <ScannerScreen>
@@ -522,4 +498,18 @@ ScreenManager:
             on_press:
                 root.manager.current = "home_screen"
                 root.manager.transition.direction = "left"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
