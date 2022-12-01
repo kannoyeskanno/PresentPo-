@@ -1,14 +1,8 @@
 from kivy.lang import Builder
-from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.core.window import Window
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
-from kivy_garden.zbarcam import ZBarCam
-from kivy.uix.scrollview import ScrollView
-from kivy.uix.boxlayout import BoxLayout
-from kivy.factory import Factory
 from kivy.core.audio import SoundLoader
 import sqlite3
 
@@ -73,8 +67,6 @@ class MainApp(MDApp):
         """)
         db.commit()
         db.close()
-
-
         return Builder.load_file('app.kv')
 
     def signup(self):
@@ -119,9 +111,10 @@ class MainApp(MDApp):
             self.update_sheet(str(self.root.get_screen("scanner_screen").ids.qr.text).strip("b'"))
 
     def check_date(self):
-        cell = sheet.find(date.today().strftime('%B %d %Y'))
+        cell = sheet.find(date.today().strftime('%B%e %Y'))
         if cell is not None:
             return cell.col
+
 
     def check_name(self, name):
         cell = sheet.find(name)
@@ -182,3 +175,5 @@ class MainApp(MDApp):
 
 
 MainApp().run()
+
+
