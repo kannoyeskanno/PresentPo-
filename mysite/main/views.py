@@ -11,6 +11,9 @@ from django.contrib import messages
 def index(response):
 	return render(response,  "main/base.html", {})
 
+def index2(response):
+	return render(response, "main/base2.html", {})
+
 def signup(response):
 	return render(response, "main/signup.html", {})
 

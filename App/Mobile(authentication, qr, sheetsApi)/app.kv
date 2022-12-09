@@ -3,7 +3,8 @@ ScreenManager:
     LoginScreen:
     SignupScreen:
     HomeScreen:
-    ScannerScreen:
+    CreateClassScreen:
+    #ScannerScreen:
 
 <IntroScreen>:
     name: "intro_screen"
@@ -114,6 +115,8 @@ ScreenManager:
         width: root.width * .8
 
         on_press: app.login()
+
+
 
     MDTextButton:
         text: "Sign Up"
@@ -268,22 +271,15 @@ ScreenManager:
                 pos: (0, 320)
                 line_color: "#F5DEB3"
 
-                MDBoxLayout:
-                    md_bg_color: "#F5DEB3"
-                    size_hint: None, None
-                    height: "40dp"
-                    #size_hint: (.3, .10)
-                    pos_hint: {"center_x": .7, "center_y": .5}
-                    line_color: "#000000"
-
-                    MDLabel:
-                        id: username
-                        text: "Username"
-                        theme_text_color: "Custom"
-                        text_color: "#000000"
-                        font_size: "17sp"
-                        bold: True
-                        #pos_hint: {"center_x":90}
+                MDLabel:
+                    id: username
+                    text: "Username"
+                    theme_text_color: "Custom"
+                    text_color: "#000000"
+                    font_size: "17sp"
+                    bold: True
+                    pos: (0, 590)
+                    #pos_hint: {"center_x":90}
 
             MDGridLayout:
                 rows: 1
@@ -332,9 +328,6 @@ ScreenManager:
                     on_release: root.manager.current = "scanner_screen"
 
 
-
-
-
         MDBottomNavigationItem:
             name: 'screen 2'
             text: 'Attendance'
@@ -354,6 +347,31 @@ ScreenManager:
                     font_size: "22sp"
                     bold: True
                     pos_hint: {"center_x":.5}
+
+            MDRectangleFlatButton:
+                text: "section"
+                text_color: "#000000"
+                line_color: "#FFFFFF"
+                font_size: "40sp"
+                pos_hint: {"center_x": .5, "center_y": .8}
+                md_bg_color: "#EC994B"
+                size_hint: None, None
+                width: root.width * .9
+                on_release: app.sheet_link()
+
+
+
+            MDRectangleFlatIconButton:
+                icon: "newspaper-plus"
+                text_color: "#000000"
+                icon_color: "#000000"
+                line_color: "#FFFFFF"
+                size_hint: (.3, .10)
+                font_size: "55sp"
+                pos_hint: {"x":.8, "y": 0}
+                on_release: app.new_class()
+
+
 
         MDBottomNavigationItem:
             name: 'screen 3'
@@ -455,7 +473,6 @@ ScreenManager:
 
                 on_release: app.show_logout_dialog()
 
-
 <ScannerScreen>
     name: "scanner_screen"
     #:import ZBarCam kivy_garden.zbarcam.ZBarCam
@@ -475,40 +492,143 @@ ScreenManager:
 
         MDRectangleFlatButton:
             text: "Scan QR"
-            text_color: "white"
             font_size: 18
+
             border: (20,20,20,20)
             size_hint: (1, .10)
             pos: (150, 90)
 
+            text_color: "white"
             line_color: "#EC994B"
             md_bg_color: "#EC994B"
+
             on_press: app.get_qr_value()
 
         MDRectangleFlatButton:
             text: "Back"
-            text_color: "white"
             font_size: 18
+
             border: (20,20,20,20)
             size_hint: (1, .10)
             pos: (150, 90)
+
+            text_color: "white"
             md_bg_color: "#051708"
             line_color: "#EC994B"
+
             on_press:
                 root.manager.current = "home_screen"
                 root.manager.transition.direction = "left"
 
 
+<CreateClassScreen>
+    name:"create_class_screen"
+
+    MDBoxLayout:
+        md_bg_color: "#EC994B"
+
+        size_hint: None, None
+        width: root.width
+        height: "65dp"
+        pos_hint: {"top": 1}
+
+        MDLabel:
+            text: "    Create Class"
+            font_size: "22sp"
+            bold: True
+
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+
+            pos_hint: {"center_x":.5}
+
+    MDTextField:
+        id: create_class
+
+        hint_text: "Class Name"
+        icon_left: "google-classroom"
+
+        size_hint_x: None
+        width: root.width * .8
+        font_size: "18sp"
+        pos_hint: {'x': .1, 'top': .8}
+
+        text_color_focus: "#EC994B"
+        icon_left_color_normal: "#EC994B"
+        icon_left_color_focus: "#EC994B"
+        hint_text_color_focus: "#EC994B"
+        line_color_focus: "#EC994B"
 
 
+    MDBoxLayout:
+        border: (20,20,20,20)
+        size_hint: (.6, .1)
+        pos_hint: {"x": .1, "y": .6}
+
+        MDLabel:
+            text: "Set Date:"
+            theme_text_color: "Custom"
+            text_color: "#000000"
+            font_size: "15sp"
+            pos_hint: {"center_x":.5}
+
+        MDRectangleFlatButton:
+            id: calendar_button
+            text: "Open Calendar"
+
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+            text_color: "black"
+            md_bg_color: "#EC994B"
+            line_color: "#FFFFFF"
+
+            on_release: app.show_date_picker()
 
 
+    MDBoxLayout:
+        border: (20,20,20,20)
+        size_hint: (.6, .1)
+        pos_hint: {"x": .1, "y": .5}
+
+        MDLabel:
+            text: "Set Time:"
+            text_color: "#000000"
+            font_size: "15sp"
+
+            pos_hint: {"center_x":.5}
+
+            theme_text_color: "Custom"
 
 
+        MDRectangleFlatButton:
+            id: clock_button
+
+            text: "Open Timetable"
+
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+            text_color: "black"
+            md_bg_color: "#EC994B"
+            line_color: "#FFFFFF"
+
+            on_release: app.show_time_picker()
 
 
+    MDRectangleFlatButton:
+        text: "Done"
+        text_color: "white"
+        font_size: 18
 
+        border: (20,20,20,20)
+        size_hint: (.3, .10)
+        pos: (150, 90)
 
+        line_color: "#EC994B"
+        md_bg_color: "#EC994B"
+
+        on_release:
+            app.add_class()
+            root.manager.transition.direction = "right"
 
 
 
