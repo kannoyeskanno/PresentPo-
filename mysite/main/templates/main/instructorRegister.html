@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+SignUp
+{% endblock %}
+<body>
+    {% block content %}
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/instructorregister.css' %}?{% now 'U' %}">
+    <form method="POST">
+        <div class="box_container">
+        <div class="txt_field">
+            <p class="user_label">Username</p>
+            <input class="user_text" type="text">
+        </div>
+        <div class="txt_field">
+            <p class="pass_label">Password</p>
+            <input class="pass_text" type="password" >
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="button" type="button"><strong>Create Account</strong></button>
+        </div>
+    </div>
+    </form>
+    <div class="box_container2">
+
+        <p><strong>Welcome!</strong><br><i>Let’s Get Started</i></p>
+
+    </div>
+
+    {% endblock %}
+
+
+
+
+</body>
