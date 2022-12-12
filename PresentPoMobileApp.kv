@@ -3,6 +3,9 @@ ScreenManager:
     LoginScreen:
     SignupScreen:
     HomeScreen:
+    #ScannerScreen:
+    ClassScreen:
+    CreateClassScreen:
 
 <IntroScreen>:
     name: "intro_screen"
@@ -24,7 +27,7 @@ ScreenManager:
     MDLabel:
         text: "An Autonomous Attendance Management System"
         theme_text_color: "Custom"
-        text_color: "#888888"
+        text_color: "#79747E"
         font_size: "15sp"
         size_hint_y: None
         pos_hint: {"center_y":.28, "center_x":.58}
@@ -57,44 +60,59 @@ ScreenManager:
 <LoginScreen>:
     name: "login_screen"
 
+    MDLabel:
+        text: "Welcome Back"
+        font_style: "H4"
+        bold: True
+        halign: "center"
+        pos_hint: {"center_y":.7}
+
+    MDLabel:
+        text: "Sign in to continue"
+        theme_text_color: "Custom"
+        text_color: "#79747E"
+        font_style: "Subtitle1"
+        halign: "center"
+        pos_hint: {"center_y":.66}
+
     MDTextField:
         id: login_username
-        hint_text: "username"
+        hint_text: "Username"
         icon_left: "account"
 
         size_hint_x: None
         width: root.width * .8
         font_size: "18sp"
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
 
-        text_color_normal: "#3A3A3A"
+        text_color_normal: "#49454F"
         text_color_focus: "#EC994B"
-        icon_left_color_normal: "#EC994B"
+        icon_left_color_normal: "#CAC4D0"
         icon_left_color_focus: "#EC994B"
-        hint_text_color_focus: "#EC994B"
+        hint_text_color_focus: "#49454F"
         line_color_focus: "#EC994B"
 
     MDTextField:
         id: login_password
-        hint_text: "password"
+        hint_text: "Password"
         icon_left: "key-variant"
         password: True
 
         size_hint_x: None
         width: root.width * .8
         font_size: "18sp"
-        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        pos_hint: {"center_x": 0.5, "center_y": 0.45}
 
-        text_color_normal: "#000000"
+        text_color_normal: "#49454F"
         text_color_focus: "#EC994B"
-        icon_left_color_normal: "#EC994B"
+        icon_left_color_normal: "#CAC4D0"
         icon_left_color_focus: "#EC994B"
-        hint_text_color_focus: "#EC994B"
+        hint_text_color_focus: "#49454F"
         line_color_focus: "#EC994B"
 
     MDIconButton:
         icon: "eye-off"
-        pos_hint: {"center_y": .41, "center_x": .84}
+        pos_hint: {"center_x": .84, "center_y": .45}
         theme_text_color: "Hint"
         on_release:
             self.icon = "eye" if self.icon == "eye-off" else "eye-off"
@@ -108,7 +126,7 @@ ScreenManager:
         line_color: "#EC994B"
         md_bg_color: "#EC994B"
 
-        pos_hint: {"center_y":.3, "center_x":.5}
+        pos_hint: {"center_x":.5, "center_y": .35}
         size_hint: None, None
         width: root.width * .8
 
@@ -121,75 +139,97 @@ ScreenManager:
         text_color: "#EC994B"
         font_size: "16sp"
 
-        pos_hint: {"center_y":.23, "center_x":.71}
+        pos_hint: {"center_x":.71, "center_y": .3}
         on_press: root.manager.current = "signup_screen"
 
     MDLabel:
         text: "Don't have an account?"
         theme_text_color: "Custom"
-        text_color: "#888888"
+        text_color: "#79747E"
         font_size: "16sp"
-        pos_hint: {"center_y":.23, "center_x":.71}
+        pos_hint: {"center_x":.71, "center_y": .3}
 
     Image:
         source: "valco_logo.png"
-        pos_hint: {"center_y":.1, "center_x":.5}
+        allow_stretch: True
+        size_hint: (.1, .1)
+        pos_hint: {"center_x":.5, "center_y": .1}
 
 <SignupScreen>:
     name: "signup_screen"
 
+    MDLabel:
+        text: "Get Started"
+        theme_text_color: "Custom"
+        text_color: "#000000"
+        font_style: "H4"
+        bold: True
+        halign: "center"
+        pos_hint: {"center_y":.8}
+
+    MDLabel:
+        text: "Create a new account"
+        theme_text_color: "Custom"
+        text_color: "#79747E"
+        font_style: "Subtitle1"
+        halign: "center"
+        pos_hint: {"center_y":.76}
+
     MDTextField:
         id: signup_email
-        hint_text: "email address"
+        hint_text: "Email address"
         icon_left: "email"
 
         size_hint_x: None
         width: root.width * .8
         font_size: "18sp"
-        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
 
+        text_color_normal: "#49454F"
         text_color_focus: "#EC994B"
-        icon_left_color_normal: "#EC994B"
+        icon_left_color_normal: "#CAC4D0"
         icon_left_color_focus: "#EC994B"
-        hint_text_color_focus: "#EC994B"
+        hint_text_color_focus: "#49454F"
         line_color_focus: "#EC994B"
 
     MDTextField:
         id: signup_username
-        hint_text: "username"
+        hint_text: "Username"
         icon_left: "account"
 
         size_hint_x: None
         width: root.width * .8
         font_size: "18sp"
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
 
+        text_color_normal: "#49454F"
         text_color_focus: "#EC994B"
-        icon_left_color_normal: "#EC994B"
+        icon_left_color_normal: "#CAC4D0"
         icon_left_color_focus: "#EC994B"
-        hint_text_color_focus: "#EC994B"
+        hint_text_color_focus: "#49454F"
         line_color_focus: "#EC994B"
 
     MDTextField:
         id: signup_password
-        hint_text: "password"
+        hint_text: "Password"
         icon_left: "lock"
         password: True
 
         size_hint_x: None
         width: root.width * .8
         font_size: "18sp"
-        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        pos_hint: {"center_x": 0.5, "center_y": 0.45}
 
+        text_color_normal: "#49454F"
         text_color_focus: "#EC994B"
-        icon_left_color_normal: "#EC994B"
+        icon_left_color_normal: "#CAC4D0"
         icon_left_color_focus: "#EC994B"
-        hint_text_color_focus: "#EC994B"
+        hint_text_color_focus: "#49454F"
         line_color_focus: "#EC994B"
 
     MDIconButton:
         icon: "eye-off"
-        pos_hint: {"center_y": .41, "center_x": .84}
+        pos_hint: {"center_x": .84, "center_y": .45}
         theme_text_color: "Hint"
         on_release:
             self.icon = "eye" if self.icon == "eye-off" else "eye-off"
@@ -203,7 +243,7 @@ ScreenManager:
         line_color: "#EC994B"
         md_bg_color: "#EC994B"
 
-        pos_hint: {"center_y":.3, "center_x":.5}
+        pos_hint: {"center_x":.5, "center_y":.35}
         size_hint: None, None
         width: root.width * .8
 
@@ -214,32 +254,41 @@ ScreenManager:
         text_color: "#EC994B"
         font_size: "16sp"
 
-        pos_hint: {"center_y":.23, "center_x":.73}
+        pos_hint: {"center_x": .73, "center_y": .3}
         on_press: root.manager.current = "login_screen"
 
     MDLabel:
         text: "Already have an account?"
         theme_text_color: "Custom"
-        text_color: "#888888"
+        text_color: "#79747E"
         font_size: "16sp"
-        pos_hint: {"center_y":.23, "center_x":.70}
+        pos_hint: {"center_x": .70, "center_y": .3}
 
     Image:
         source: "valco_logo.png"
-        pos_hint: {"center_y":.1, "center_x":.5}
+        allow_stretch: True
+        size_hint: (.1, .1)
+        pos_hint: {"center_x":.5, "center_y": .1}
 
 <HomeScreen>:
     name: "home_screen"
 
     MDBottomNavigation:
-        panel_color: "#EC994B"
-        text_color_normal: 0/236, 0/153, 0/75, .6
-        text_color_active: 0/236, 0/153, 0/75, 1
+        panel_color: "#FFFEFE"
+        text_color_normal: "#C29E7E"
+        text_color_active: "#EC994B"
 
         MDBottomNavigationItem:
             name: 'screen 1'
             text: 'Home'
             icon: 'home'
+
+            MDBoxLayout:
+                md_bg_color: "#CAC4D0"
+                size_hint: None, None
+                width: root.width
+                height: "0.5dp"
+                pos_hint: {"bottom": 1}
 
             MDBoxLayout:
                 md_bg_color: "#EC994B"
@@ -258,8 +307,15 @@ ScreenManager:
 
         MDBottomNavigationItem:
             name: 'screen 2'
-            text: 'Attendance'
-            icon: 'calendar'
+            text: 'Records'
+            icon: 'file'
+
+            MDBoxLayout:
+                md_bg_color: "#CAC4D0"
+                size_hint: None, None
+                width: root.width
+                height: "0.5dp"
+                pos_hint: {"bottom": 1}
 
             MDBoxLayout:
                 md_bg_color: "#EC994B"
@@ -269,37 +325,61 @@ ScreenManager:
                 pos_hint: {"top": 1}
 
                 MDLabel:
-                    text: "    Attendance"
+                    text: "    Class Record"
                     theme_text_color: "Custom"
                     text_color: "#FFFFFF"
                     font_size: "22sp"
                     bold: True
                     pos_hint: {"center_x":.5}
+
+            MDScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                size_hint: .9, 1
+                pos_hint: {"center_x": .5, "top": .9}
+
+                MDCard:
+                    md_bg_color: "#EC994B"
+                    size_hint: 1, .25
+                    halign: "center"
+                    elevation: 1
+
+                    MDBoxLayout:
+                        md_bg_color: "#FFFFFF"
+                        size_hint: 1, .33
+
+                        TwoLineListItem:
+                            text: "Class Name"
+                            secondary_text: "Time Schedule"
+                            secondary_font_style: "Body2"
+                            on_press:
+                                root.manager.current="class_screen"
+                                app.show_attendance_table()
+
+            MDRectangleFlatButton:
+                text: "Create New Record"
+                text_color: "white"
+                font_size: "18sp"
+
+                line_color: "#EC994B"
+                md_bg_color: "#EC994B"
+
+                pos_hint: {"center_x": .5, "center_y": .05}
+                size_hint: .9, 0
+
+                on_press: root.manager.current= "create_class_screen"
 
         MDBottomNavigationItem:
             name: 'screen 3'
-            text: 'Scan'
-            icon: 'qrcode'
+            text: 'Account'
+            icon: 'account'
 
             MDBoxLayout:
-                md_bg_color: "#EC994B"
+                md_bg_color: "#CAC4D0"
                 size_hint: None, None
                 width: root.width
-                height: "65dp"
-                pos_hint: {"top": 1}
-
-                MDLabel:
-                    text: "    Scan QR Code"
-                    theme_text_color: "Custom"
-                    text_color: "#FFFFFF"
-                    font_size: "22sp"
-                    bold: True
-                    pos_hint: {"center_x":.5}
-
-        MDBottomNavigationItem:
-            name: 'screen 4'
-            text: 'Settings'
-            icon: 'cog'
+                height: "0.5dp"
+                pos_hint: {"bottom": 1}
 
             MDBoxLayout:
                 md_bg_color: "#EC994B"
@@ -316,48 +396,237 @@ ScreenManager:
                     bold: True
                     pos_hint: {"center_x":.5}
 
-            MDRectangleFlatIconButton:
+            MDIcon:
                 icon: "account-circle"
-                text: "Account"
-                font_size:"21sp"
-                text_color: "#000000"
-                icon_color: "#000000"
-                line_color: "#AAAAAA"
+                font_size: "96px"
+                pos_hint: {"center_x": .5, "center_y": .8}
 
-                size_hint: 1, 0
-                pos_hint: {'top': 0.8}
+            MDLabel:
+                text: "Username"
+                font_style: "H4"
+                bold: True
+                halign: "center"
+                pos_hint: {"top":1.2}
 
-            MDRectangleFlatIconButton:
-                icon: "headset"
-                text: "Help and Support"
-                font_size: "21sp"
-                text_color: "#000000"
-                icon_color: "#000000"
-                line_color: "#AAAAAA"
+            MDLabel:
+                text: "    Account Settings"
+                font_style: "H6"
+                pos_hint: {"top":1.1, "center_x":.5}
 
-                size_hint: 1, 0
-                pos_hint: {'top': .72}
+            MDList:
+                size_hint: None, None
+                width: root.width * .9
+                pos_hint: {"top": .595, "center_x": .5}
 
-            MDRectangleFlatIconButton:
-                icon: "help-circle-outline"
-                text: "About Us"
-                font_size: "21sp"
-                text_color: "#000000"
-                icon_color: "#000000"
-                line_color: "#AAAAAA"
+                TwoLineIconListItem:
+                    text: "Your Info"
+                    secondary_text: "View and Edit Profile info"
+                    secondary_font_style: "Body2"
 
-                size_hint: 1, 0
-                pos_hint: {'top': .64}
+                    IconLeftWidget:
+                        icon: "account"
 
-            MDRectangleFlatIconButton:
-                icon: "logout"
-                text: "Logout"
-                font_size: "21sp"
-                text_color: "#000000"
-                icon_color: "#000000"
-                line_color: "#AAAAAA"
+            MDLabel:
+                text: "    Shortcuts"
+                font_style: "H6"
+                pos_hint: {"top": .932, "center_x": .5}
 
-                size_hint: 1, 0
-                pos_hint: {'top': .56}
+            MDList:
+                size_hint: None, None
+                width: root.width * .9
+                pos_hint: {"top": .42, "center_x": .5}
 
-                on_release: app.show_logout_dialog()
+                OneLineIconListItem:
+                    text: "About us"
+
+                    IconLeftWidget:
+                        icon: "help-circle-outline"
+
+                OneLineIconListItem:
+                    text: "Help and Support"
+
+                    IconLeftWidget:
+                        icon: "headset"
+
+                OneLineIconListItem:
+                    text: "Logout"
+                    on_release: app.show_logout_dialog()
+
+                    IconLeftWidget:
+                        icon: "logout"
+
+<CreateClassScreen>
+    name: "create_class_screen"
+
+    MDBoxLayout:
+        md_bg_color: "#EC994B"
+
+        size_hint: None, None
+        width: root.width
+        height: "65dp"
+        pos_hint: {"top": 1}
+
+        MDIconButton:
+            icon: "arrow-left"
+            halign: "left"
+            pos_hint: {"center_y": .5}
+            theme_icon_color: "Custom"
+            icon_color: "#FFFFFF"
+
+            on_press: root.manager.current="home_screen"
+
+        MDLabel:
+            text: "  Create Class"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_size: "22sp"
+            bold: True
+            halign: "left"
+            pos_hint: {"center_y":.5}
+
+    MDLabel:
+        text: "    Content"
+        font_style: "H6"
+        pos_hint: {"top":1.38, "center_x":.5}
+
+    MDTextField:
+        id: create_class_name
+        hint_text: "Class Name"
+        mode: "rectangle"
+
+        size_hint_x: None
+        width: root.width * .9
+        font_size: "18sp"
+        pos_hint: {"center_x": 0.5, "top": .85}
+
+        text_color_normal: "#49454F"
+        text_color_focus: "#EC994B"
+        hint_text_color_focus: "#49454F"
+        line_color_focus: "#EC994B"
+
+    MDLabel:
+        text: "    Time Schedule"
+        font_style: "H6"
+        pos_hint: {"top":1.23, "center_x":.5}
+
+    MDRectangleFlatIconButton:
+        id: clock_button
+        icon: "clock"
+        text: "00:00 AM"
+        font_size: "18sp"
+
+        text_color: "black"
+        icon_color: "#CAC4D0"
+        md_bg_color: "#FFFFFF"
+        line_color: "#49454F"
+
+        size_hint: .40, 0
+        pos_hint: {"top":.685, "center_x":.25}
+
+        on_release: app.show_time_picker()
+
+    MDRectangleFlatButton:
+        text: "Create"
+        text_color: "white"
+        font_size: "18sp"
+
+        line_color: "#EC994B"
+        md_bg_color: "#EC994B"
+
+        pos_hint: {"center_x": .5, "center_y": .05}
+        size_hint: .9, 0
+
+<ClassScreen>
+    name:"class_screen"
+
+    MDBoxLayout:
+        md_bg_color: "#EC994B"
+
+        size_hint: None, None
+        width: root.width
+        height: "65dp"
+        pos_hint: {"top": 1}
+
+        MDIconButton:
+            icon: "arrow-left"
+            halign: "left"
+            pos_hint: {"center_y": .5}
+            theme_icon_color: "Custom"
+            icon_color: "#FFFFFF"
+
+            on_press: root.manager.current="home_screen"
+
+    MDLabel:
+        text: "    Class name"
+        font_style: "H5"
+        pos_hint: {"top": 1.35, "center_x": .5}
+
+    AnchorLayout:
+        id: data_layout
+
+    MDRectangleFlatButton:
+        text: "Start Attendance"
+        text_color: "white"
+        font_size: "18sp"
+
+        line_color: "#EC994B"
+        md_bg_color: "#EC994B"
+
+        pos_hint: {"center_x": .5, "center_y": .05}
+        size_hint: .9, 0
+
+<ScannerScreen>
+    name: "scanner_screen"
+    #:import ZBarCam kivy_garden.zbarcam.ZBarCam
+
+    MDBoxLayout:
+        md_bg_color: "#EC994B"
+
+        size_hint: None, None
+        width: root.width
+        height: "65dp"
+        pos_hint: {"top": 1}
+
+        MDIconButton:
+            icon: "arrow-left"
+            halign: "left"
+            pos_hint: {"center_y": .5}
+            theme_icon_color: "Custom"
+            icon_color: "#FFFFFF"
+
+            on_press: root.manager.current="home_screen"
+
+        MDLabel:
+            text: "  Scan Attendance"
+            theme_text_color: "Custom"
+            text_color: "#FFFFFF"
+            font_size: "22sp"
+            bold: True
+            halign: "left"
+            pos_hint: {"center_y":.5}
+
+    BoxLayout:
+        orientation: 'vertical'
+        ZBarCam:
+            id: zbarcam
+            # optional, override the camera index (default 0)
+            camera_index: 0     # or try a different value
+            # optional, by default checks all types
+            code_types: 'QRCODE', 'EAN13'
+
+        Label:
+            id: qr
+            size_hint: None, None
+            size: self.texture_size[0], 50
+            text: ', '.join([str(symbol.data) for symbol in zbarcam.symbols])
+
+        MDRectangleFlatButton:
+            text: "Scan QR"
+            text_color: "white"
+            font_size: "18sp"
+
+            line_color: "#EC994B"
+            md_bg_color: "#EC994B"
+
+            pos_hint: {"center_x": .5, "center_y": .05}
+            size_hint: .9, 0
