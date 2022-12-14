@@ -3,7 +3,7 @@ ScreenManager:
     LoginScreen:
     SignupScreen:
     HomeScreen:
-    #ScannerScreen:
+    ScannerScreen:
     ClassScreen:
     CreateClassScreen:
 
@@ -130,8 +130,7 @@ ScreenManager:
         size_hint: None, None
         width: root.width * .8
 
-        on_press: root.manager.current = "home_screen"
-
+        on_press: app.login()
     MDTextButton:
         text: "Sign Up"
         bold: True
@@ -246,6 +245,8 @@ ScreenManager:
         pos_hint: {"center_x":.5, "center_y":.35}
         size_hint: None, None
         width: root.width * .8
+        on_press: app.signup()
+
 
     MDTextButton:
         text: "Log In"
@@ -304,6 +305,27 @@ ScreenManager:
                     font_size: "22sp"
                     bold: True
                     pos_hint: {"center_x":.5}
+
+            MDBoxLayout:
+                md_bg_color: "#F5DEB3"
+                size_hint: None, None
+                width: root.width
+                height: "150dp"
+                #size_hint: (.3, .10)
+                pos: (0, 320)
+                line_color: "#F5DEB3"
+
+                MDLabel:
+                    id: username
+                    text: "Username"
+                    theme_text_color: "Custom"
+                    text_color: "#000000"
+                    font_size: "17sp"
+                    bold: True
+                    pos: (0, 590)
+                    #pos_hint: {"center_x":90}
+
+
 
         MDBottomNavigationItem:
             name: 'screen 2'
@@ -525,6 +547,27 @@ ScreenManager:
 
         on_release: app.show_time_picker()
 
+    MDLabel:
+        text: "    Date Range"
+        font_style: "H6"
+        pos_hint: {"top":1.03, "center_x":.5}
+
+    MDRectangleFlatIconButton:
+        id: calendar_button
+        icon: "calendar"
+        text: "mm/dd/yyyy"
+        font_size: "18sp"
+
+        text_color: "black"
+        icon_color: "#CAC4D0"
+        md_bg_color: "#FFFFFF"
+        line_color: "#49454F"
+
+        size_hint: .40, 0
+        pos_hint: {"top":.485, "center_x":.25}
+
+        on_release: app.show_date_picker()
+
     MDRectangleFlatButton:
         text: "Create"
         text_color: "white"
@@ -565,6 +608,18 @@ ScreenManager:
         id: data_layout
 
     MDRectangleFlatButton:
+        text: "Open Sheets"
+        text_color: "white"
+        font_size: "18sp"
+
+        line_color: "#EC994B"
+        md_bg_color: "#EC994B"
+
+        pos_hint: {"center_x": .75, "center_y": .85}
+        size_hint: .30, 0
+        on_press: app.sheet_link()
+
+    MDRectangleFlatButton:
         text: "Start Attendance"
         text_color: "white"
         font_size: "18sp"
@@ -574,6 +629,8 @@ ScreenManager:
 
         pos_hint: {"center_x": .5, "center_y": .05}
         size_hint: .9, 0
+        on_press:  root.manager.current = "scanner_screen"
+
 
 <ScannerScreen>
     name: "scanner_screen"
@@ -620,6 +677,7 @@ ScreenManager:
             size: self.texture_size[0], 50
             text: ', '.join([str(symbol.data) for symbol in zbarcam.symbols])
 
+
         MDRectangleFlatButton:
             text: "Scan QR"
             text_color: "white"
@@ -630,3 +688,6 @@ ScreenManager:
 
             pos_hint: {"center_x": .5, "center_y": .05}
             size_hint: .9, 0
+            on_press:
+                app.get_qr_value()
+                app.daily_time_in()
